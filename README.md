@@ -12,8 +12,12 @@
 - LGET
 
 Запустить через Docker:
+
 cd redis-cache
+
 docker build -t redis-cache:latest .
+
 docker run -p 8080:8080 redis-cache .
+
 
 Внутри есть файл с Postman коллекцией со всеми запросами.
