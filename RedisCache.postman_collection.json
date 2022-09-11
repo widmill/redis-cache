@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "3016800a-5b2d-4ded-8d0c-f4d1d51a634b",
+		"name": "RedisCache",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21056224"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"key\": \"Loh\",\r\n    \"value\": \"alkash\",\r\n    \"options\":\r\n    [\r\n        1,\r\n        2\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/get/mykey",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"get",
+						"mykey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SET",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"key\": \"mykey\",\r\n    \"value\": \"Hello\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/set",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"set"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DEL",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/del/mykey",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"del",
+						"mykey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LSET",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"key\": \"mykey\",\r\n    \"value\": [\r\n        \"Hello\",\r\n        \"World\",\r\n        \"From Lset\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/lset",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LGET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/lget/mykey",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lget",
+						"mykey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HGET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/hget/mykey/field1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"hget",
+						"mykey",
+						"field1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HSET",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"key\": \"mykey\",\r\n    \"value\" : \r\n    { \r\n        \"field1\" : \"value1\", \r\n        \"field2\" : \"value2\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/hset",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"hset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KEYS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/keys/kakoi",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"keys",
+						"kakoi"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
