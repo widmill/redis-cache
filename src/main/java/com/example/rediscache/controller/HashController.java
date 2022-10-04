@@ -20,14 +20,9 @@ public class HashController {
     }
 
     @GetMapping("/hget/{key}/{field}")
-    public ResponseEntity getHash(@PathVariable String key, @PathVariable String field) {
+    public String getHash(@PathVariable String key, @PathVariable String field) {
 
-        try {
-            return ResponseEntity.ok(redisService.getHash(key, field));
-        } catch (NoValueForThisKey e) {
-            return ResponseEntity.badRequest().body("Value for this key does not exist.");
-        }
-
+        return redisService.getHash(key, field);
     }
 
     @PostMapping("/hset")

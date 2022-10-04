@@ -19,13 +19,9 @@ public class ListController {
     }
 
     @GetMapping("/lget/{key}")
-    public ResponseEntity getList(@PathVariable String key) {
+    public List<String> getList(@PathVariable String key) {
 
-        try {
-            return ResponseEntity.ok(redisService.getList(key));
-        } catch (NoValueForThisKey e) {
-            return ResponseEntity.badRequest().body("Value for this key does not exist.");
-        }
+        return redisService.getList(key);
 
     }
 

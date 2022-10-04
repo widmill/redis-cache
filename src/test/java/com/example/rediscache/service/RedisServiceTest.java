@@ -41,7 +41,7 @@ public class RedisServiceTest {
 
         redisService.setString(object);
 
-        redisService.delString(object.getKey());
+        redisService.deleteString(object.getKey());
 
         redisService.getString("mykey");
 

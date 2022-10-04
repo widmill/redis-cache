@@ -1,6 +1,7 @@
 package com.example.rediscache.service;
 
 import com.example.rediscache.exception.NoValueForThisKey;
+import com.example.rediscache.exception.WrongTypeException;
 import com.example.rediscache.model.HashValue;
 import com.example.rediscache.model.ListValue;
 import com.example.rediscache.model.StringValue;
@@ -15,9 +16,9 @@ import java.util.stream.Collectors;
 @Service
 public class RedisService {
 
-    Logger log = LoggerFactory.getLogger(RedisService.class);
+    private static final Logger log = LoggerFactory.getLogger(RedisService.class);
 
-    private final HashMap<String, Object> cacheMemory = new HashMap<>();
+    private final Map<String, Object> cacheMemory = new HashMap<>();
 
 
     public String getString(String key) {
@@ -26,6 +27,13 @@ public class RedisService {
 
         if (cacheMemory.get(key) == null) {
             throw new NoValueForThisKey("Value for this key does not exist.");
+        }
+
+        if (cacheMemory.get(key).getClass() != String.class) {
+
+            throw new WrongTypeException(
+                    "Found value for key " + key + " is not string.");
+
         }
 
         return (String) cacheMemory.get(key);
@@ -45,7 +53,7 @@ public class RedisService {
 
     }
 
-    public Map<String, String> delString(String key) {
+    public Map<String, String> deleteString(String key) {
 
         log.info("Deleting value for the key: [key = {}]", key);
 
@@ -100,8 +108,7 @@ public class RedisService {
             throw new NoValueForThisKey("Value for this key does not exist.");
         }
 
-        @SuppressWarnings("unchecked")
-        HashMap<String, String> map = (HashMap<String, String>) raw;
+        Map<String, String> map = (HashMap<String, String>) raw;
 
         return map.get(field);
 

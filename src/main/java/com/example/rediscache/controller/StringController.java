@@ -21,13 +21,9 @@ public class StringController {
     }
 
     @GetMapping("/get/{key}")
-    public ResponseEntity getString(@PathVariable String key) {
+    public String getString(@PathVariable String key) {
 
-        try {
-            return ResponseEntity.ok(redisService.getString(key));
-        } catch (NoValueForThisKey e) {
-            return ResponseEntity.badRequest().body("Value for this key does not exist.");
-        }
+        return redisService.getString(key);
 
     }
 
@@ -42,7 +38,7 @@ public class StringController {
     public ResponseEntity deleteString(@PathVariable String key) {
 
         try {
-            return ResponseEntity.ok(redisService.delString(key));
+            return ResponseEntity.ok(redisService.deleteString(key));
         } catch (NoValueForThisKey e) {
             return ResponseEntity.badRequest().body("Value for this key does not exist.");
         }
